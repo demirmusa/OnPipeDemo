@@ -17,9 +17,9 @@ TagManager:
   - Pipe
   - Player
   - PlayerKiller
-  - 
-  - 
-  - 
+  - Collectable
+  - GameFinishLine
+  - CollectableItem
   - 
   - 
   - 

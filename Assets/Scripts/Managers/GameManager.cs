@@ -1,11 +1,14 @@
 ﻿using Players;
+using UI;
 using UnityEngine;
+using Utilities.PlayerInfoStore;
 
 namespace Managers
 {
     public class GameManager : MonoBehaviour
     {
         public Player player;
+        public CanvasGroupManager canvasGroupManager;
         public static GameManager Instance;
 
         private void Awake()
@@ -43,23 +46,65 @@ namespace Managers
         public void SetMenu()
         {
             GameState = GameState.MENU;
+            canvasGroupManager.OpenMenuCanvas();
         }
 
         public void SetGame()
         {
             GameState = GameState.GAME;
+            canvasGroupManager.OpenGameCanvas();
+            
+            CurrentCollectedItemCount = PlayerCollectedItemStore.GetCurrent();
+            GlobalEvents.InvokeOnGameStart();
         }
 
         public void SetLevelComplete()
         {
+            if (GameState != GameState.GAME)
+            {
+                return;
+            }
+
             GameState = GameState.LEVELCOMPLETE;
+            canvasGroupManager.OpenLevelCompleteCanvas();
+
+            PlayerCollectedItemStore.StoreCurrent(CurrentCollectedItemCount);
+            PlayerLevelStore.AddLevel();
+
+            Debug.Log("Level Completed");
         }
 
         public void SetGameOver()
         {
-            Debug.Log("Died Bro");
+            if (GameState != GameState.GAME)
+            {
+                return;
+            }
+
             GameState = GameState.GAMEOVER;
+            canvasGroupManager.OpenGameOverCanvas();
+
+            PlayerCollectedItemStore.StoreCurrent(0);
             player.Die();
+
+            Debug.Log("Game Over");
+        }
+
+        private int _currentCollectedItemCount = 1;
+
+        public int CurrentCollectedItemCount
+        {
+            get => _currentCollectedItemCount;
+            set
+            {
+                if (_currentCollectedItemCount == value)
+                {
+                    return;
+                }
+
+                _currentCollectedItemCount = value;
+                GlobalEvents.InvokeOnGameCollectedItemCountChanged();
+            }
         }
     }
 }

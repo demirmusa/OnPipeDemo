@@ -37,6 +37,7 @@ namespace Players
                 //boru karakterden daha büyükse oyun biter
                 if (arch.transform.localScale.x < GameManager.Instance.CurrentPipeScale)
                 {
+                    Debug.Log("_checkScaleChanges ile öldün");
                     GameManager.Instance.SetGameOver();
                 }
                 else if (Input.GetMouseButton(0)) //boru karakterden daha küçükse ve basmaya devam ediyorsa karakteri küçült

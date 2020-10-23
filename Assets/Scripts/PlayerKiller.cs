@@ -8,6 +8,12 @@ public class PlayerKiller : MonoBehaviour
 {
     private void OnCollisionEnter(Collision other)
     {
+        if (GameManager.Instance.player.IsDead || !other.gameObject.CompareTag("Player"))
+        {
+            return;
+        }
+
+        Debug.Log("Killer ile öldün", gameObject);
         GameManager.Instance.SetGameOver();
     }
 }

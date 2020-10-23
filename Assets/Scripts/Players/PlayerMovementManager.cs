@@ -15,7 +15,7 @@ namespace Players
         {
             _rigidbody = GetComponent<Rigidbody>();
 
-            _velocityVector = speed * Vector3.right;
+            _velocityVector = speed * Vector3.up;
             _rigidbody.velocity = Vector3.zero;
         }
 
@@ -27,12 +27,7 @@ namespace Players
                 return;
             }
 
-            Move();
-        }
-
-        private void Move()
-        {
-            _rigidbody.velocity = _velocityVector * Time.deltaTime;
+            _rigidbody.velocity = _velocityVector;
         }
     }
 }

@@ -8,4 +8,18 @@ public class GlobalEvents
     {
         OnPipeScaleChanged?.Invoke();
     }
+    
+    public static event Action OnGameCollectedItemCountChanged;
+
+    public static void InvokeOnGameCollectedItemCountChanged()
+    {
+        OnGameCollectedItemCountChanged?.Invoke();
+    }
+    
+    public static event Action OnGameStart;
+
+    public static void InvokeOnGameStart()
+    {
+        OnGameStart?.Invoke();
+    }
 }

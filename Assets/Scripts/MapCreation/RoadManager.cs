@@ -37,7 +37,7 @@ namespace MapCreation
             foreach (var tile in levelTiles)
             {
                 Instantiate(tile, spawnPos, Quaternion.identity, transform);
-                spawnPos.x += tile.length;
+                spawnPos.y += tile.length;
             }
 
             Instantiate(finishTile, spawnPos, Quaternion.identity, transform);

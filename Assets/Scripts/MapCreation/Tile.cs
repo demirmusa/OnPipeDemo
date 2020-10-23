@@ -15,8 +15,8 @@ namespace MapCreation
 
         private void OnDrawGizmos()
         {
-            Vector3 center = transform.position + (length / 2 * Vector3.right);
-            Vector3 size = new Vector3(length, 20, 20);
+            Vector3 center = transform.position + (length / 2 * Vector3.up);
+            Vector3 size = new Vector3(20, length, 20);
 
             Gizmos.color = Color.red;
             Gizmos.DrawWireCube(center, size);
