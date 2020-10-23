@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Utilities
+namespace Utilities.PlayerInfoStore
 {
     public class PlayerLevelStore
     {
@@ -9,9 +9,9 @@ namespace Utilities
         public static int GetCurrentLevel()
         {
             var level = PlayerPrefs.GetInt(LevelPrefKey);
-            if (level != 0) 
+            if (level != 0)
                 return level;
-            
+
             PlayerPrefs.SetInt(LevelPrefKey, 1);
             return 1;
         }
