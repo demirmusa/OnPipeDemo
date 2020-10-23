@@ -33,6 +33,10 @@ namespace MapCreation
             var level = PlayerLevelStore.GetCurrentLevel();
 
             var lastRequestedLevel = PlayerPrefs.GetInt(LastRequestedLevelKey);
+
+#if DEBUG
+            return NewRandomLevel(level);
+#endif
             return lastRequestedLevel == level
                 ? GetSavedLevel(level)
                 : NewRandomLevel(level);
