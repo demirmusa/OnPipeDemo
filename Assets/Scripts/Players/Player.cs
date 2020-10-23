@@ -23,7 +23,6 @@ namespace Players
 
         public void Die()
         {
-            Debug.Log("Die");
             IsDead = true;
             if (playerArchAnimator != null)
             {
