@@ -3,12 +3,11 @@ using UnityEngine;
 
 namespace Collectables
 {
-    /// <summary>
-    /// Collectable objeler Collectable layerında ve bu layer da yalnızca player ile ile etkileşime geçebilir. Layer Collusion Matrixinden bu şekilde ayarlandı.
-    /// </summary>
     public abstract class CollectableObjectBase : MonoBehaviour
     {
         private bool _isCollected = false;
+
+        private SimpleTimer _timer;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -22,12 +21,20 @@ namespace Collectables
 
             OnCollect();
 
-            SimpleTimer.Create(2f, DestroyMe);
+            _timer = SimpleTimer.Create(2f, DestroyMe);
         }
 
         private void DestroyMe()
         {
             Destroy(gameObject);
+        }
+
+        private void OnDisable()
+        {
+            if (_timer)
+            {
+                _timer.Stop();
+            }
         }
 
         protected abstract void OnCollect();

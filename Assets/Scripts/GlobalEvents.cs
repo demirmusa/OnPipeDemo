@@ -22,4 +22,11 @@ public class GlobalEvents
     {
         OnGameStart?.Invoke();
     }
+    
+    public static event Action OnSetMenu;
+
+    public static void InvokeOnSetMenu()
+    {
+        OnSetMenu?.Invoke();
+    }
 }

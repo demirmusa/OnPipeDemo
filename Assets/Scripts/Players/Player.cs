@@ -34,11 +34,21 @@ namespace Players
         {
             IsDead = false;
             transform.position = _startPosition;
-            
+            playerScaleManager.ResetScale();
             if (playerArchAnimator != null)
             {
                 playerArchAnimator.SetTrigger(ResetAnimHash);
             }
+        }
+        
+        private void OnEnable()
+        {
+            GlobalEvents.OnSetMenu += Reset;
+        }
+
+        private void OnDisable()
+        {
+            GlobalEvents.OnSetMenu -= Reset;
         }
     }
 }

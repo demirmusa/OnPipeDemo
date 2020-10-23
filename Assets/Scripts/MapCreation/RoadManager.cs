@@ -7,11 +7,10 @@ namespace MapCreation
     {
         [SerializeField] private int minTileLengthInALevel;
         [SerializeField] private int maxTileLengthInALevel;
-        
-        [Header("Prefabs")]
-        [SerializeField] private Tile[] allMapTiles;
+
+        [Header("Prefabs")] [SerializeField] private Tile[] allMapTiles;
         [SerializeField] private Tile finishTile;
-        
+
         private LevelManager _levelManager;
 
         private void Awake()
@@ -19,20 +18,15 @@ namespace MapCreation
             _levelManager = new LevelManager(minTileLengthInALevel, maxTileLengthInALevel, allMapTiles);
         }
 
-        private void Start()
-        {
-            SpawnLevel();
-        }
-
         public void SpawnLevel()
         {
             CleanTiles();
-            
+
             //level managerdan şuanki levele ait haritayı iste
             var levelTiles = _levelManager.GetLevelTiles();
 
             Vector3 spawnPos = Vector3.zero;
-            
+
             //harita elemanlarının içerisinde dön ve onları oluştur
             foreach (var tile in levelTiles)
             {
@@ -52,6 +46,16 @@ namespace MapCreation
                 t.SetParent(null);
                 Destroy(t.gameObject);
             }
+        }
+
+        private void OnEnable()
+        {
+            GlobalEvents.OnSetMenu += SpawnLevel;
+        }
+
+        private void OnDisable()
+        {
+            GlobalEvents.OnSetMenu -= SpawnLevel;
         }
     }
 }

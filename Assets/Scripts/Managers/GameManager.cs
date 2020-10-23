@@ -1,4 +1,5 @@
-﻿using Players;
+﻿using System;
+using Players;
 using UI;
 using UnityEngine;
 using Utilities.PlayerInfoStore;
@@ -20,7 +21,10 @@ namespace Managers
             }
 
             Instance = this;
+        }
 
+        private void Start()
+        {
             SetMenu();
         }
 
@@ -47,13 +51,14 @@ namespace Managers
         {
             GameState = GameState.MENU;
             canvasGroupManager.OpenMenuCanvas();
+            GlobalEvents.InvokeOnSetMenu();
         }
 
         public void SetGame()
         {
             GameState = GameState.GAME;
             canvasGroupManager.OpenGameCanvas();
-            
+
             CurrentCollectedItemCount = PlayerCollectedItemStore.GetCurrent();
             GlobalEvents.InvokeOnGameStart();
         }

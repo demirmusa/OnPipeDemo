@@ -47,7 +47,7 @@ namespace Players
             }
         }
 
-        private void ResetScale()
+        public void ResetScale()
         {
             arch.transform.localScale = _startScale;
         }
