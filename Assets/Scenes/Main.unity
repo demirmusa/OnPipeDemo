@@ -371,12 +371,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db4be1a164d44f58884045e42a78cdeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minTileLengthInALevel: 2
-  maxTileLengthInALevel: 5
+  minTileLengthInALevel: 10
+  maxTileLengthInALevel: 20
   allMapTiles:
   - {fileID: 5725088198001187241, guid: 0caa9d610a0248f4e9ec3ddf27e2d86c, type: 3}
   - {fileID: 5725088198001187241, guid: 83748a1bf1399b54083e513e81076568, type: 3}
   - {fileID: 5725088198001187241, guid: c1c05dbe06cf1d046b7b6137edf40e48, type: 3}
+  - {fileID: 5725088198001187241, guid: a0de8e64c0095b546b6b3ba751735db7, type: 3}
   finishTile: {fileID: 5725088198001187241, guid: 0f55998b04d5ca44e8b1a1cb357ae17a, type: 3}
 --- !u!1 &493997189
 GameObject:
@@ -543,7 +544,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-35638
+  m_Name: pb_Mesh-102914
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1633,7 +1634,7 @@ GameObject:
   - component: {fileID: 1383479209}
   m_Layer: 8
   m_Name: Detector
-  m_TagString: Untagged
+  m_TagString: Dedector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

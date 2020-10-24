@@ -3,7 +3,6 @@
     public enum EnumCollectableType
     {
         Cubes,
-        CornPieces,
-        Leaves
+        Rocks
     }
 }
