@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Collectables;
+using UnityEngine;
 
 namespace MapCreation
 {
@@ -9,9 +10,10 @@ namespace MapCreation
     {
         [SerializeField] private int id;
         public int Id => id;
-        
+
         public float length;
-        public int minRequiredPlayerLevel;
+
+        public EnumCollectableType CollectableType;
 
         private void OnDrawGizmos()
         {

@@ -57,7 +57,7 @@ namespace MapCreation
 
             for (var index = 0; index < savedLevelsTileIds.Count; index++)
             {
-                tiles[index] = GetTileByIdOrDefault(savedLevelsTileIds[index], level);
+                tiles[index] = GetTileByIdOrDefault(savedLevelsTileIds[index]);
             }
 
             return tiles;
@@ -66,7 +66,8 @@ namespace MapCreation
         private Tile[] NewRandomLevel(int level)
         {
             ClearCurrentLevelInfo();
-            var availableTiles = _allMapTiles.Where(t => t.minRequiredPlayerLevel <= level).ToList();
+            var playersCollectableType = PlayerCollectableTypeInfoStore.Get();
+            var availableTiles = _allMapTiles.Where(t => t.CollectableType == playersCollectableType).ToList();
 
             int tileCountInLevel = Random.Range(_minTileLengthInALevel, _maxTileLengthInALevel + 1);
 
@@ -97,12 +98,13 @@ namespace MapCreation
             PlayerPrefList.AddOrUpgradeList(LastRequestedLevelListKey, tiles.Select(x => x.Id).ToList());
         }
 
-        private Tile GetTileByIdOrDefault(int id, int level)
+        private Tile GetTileByIdOrDefault(int id)
         {
             var tile = _allMapTiles.FirstOrDefault(x => x.Id == id);
+            var playersCollectableType = PlayerCollectableTypeInfoStore.Get();
             //bir hata olursa başka bir tile dön
-            return tile == null 
-                ? _allMapTiles.FirstOrDefault(t => t.minRequiredPlayerLevel <= level) 
+            return tile == null
+                ? _allMapTiles.FirstOrDefault(t => t.CollectableType == playersCollectableType)
                 : tile;
         }
     }
