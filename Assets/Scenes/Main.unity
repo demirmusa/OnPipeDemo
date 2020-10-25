@@ -374,12 +374,27 @@ MonoBehaviour:
   minTileLengthInALevel: 10
   maxTileLengthInALevel: 20
   allMapTiles:
+  - {fileID: 5725088198001187241, guid: f34c4f2f83a70ed4393297b5dfc097f0, type: 3}
+  - {fileID: 5725088198001187241, guid: e0850a8f0d0001544b2a796f808eb78a, type: 3}
+  - {fileID: 5725088198001187241, guid: 6b00cc1cec1e5fc4c9995cab08ca44a5, type: 3}
+  - {fileID: 5725088198001187241, guid: 5dfdce665c1f47c45a6cc0319c5c3605, type: 3}
+  - {fileID: 5725088198001187241, guid: 2b712ef1e140b1449ae2cc376d78b915, type: 3}
+  - {fileID: 5725088198001187241, guid: fc30455426f4ffa4c81de8a341401713, type: 3}
+  - {fileID: 5725088198001187241, guid: bab628768a0d38d4991b6319d1fbe017, type: 3}
   - {fileID: 5725088198001187241, guid: 0caa9d610a0248f4e9ec3ddf27e2d86c, type: 3}
   - {fileID: 5725088198001187241, guid: 83748a1bf1399b54083e513e81076568, type: 3}
   - {fileID: 5725088198001187241, guid: c1c05dbe06cf1d046b7b6137edf40e48, type: 3}
+  - {fileID: 5725088198001187241, guid: 0df8971905e710841851bb2cd66cf6d4, type: 3}
+  - {fileID: 5725088198001187241, guid: 0a0a92799ba1a084f8627a8145b12a5b, type: 3}
+  - {fileID: 5725088198001187241, guid: 7e10ba0bf6143e142907d94b528e00a3, type: 3}
+  - {fileID: 5725088198001187241, guid: d6722df5a626d3243abc1bee5da1e01b, type: 3}
   - {fileID: 5725088198001187241, guid: a0de8e64c0095b546b6b3ba751735db7, type: 3}
-  - {fileID: 5725088198001187241, guid: f34c4f2f83a70ed4393297b5dfc097f0, type: 3}
-  - {fileID: 5725088198001187241, guid: ff7865b2a5345774db0b9d75dfc18d06, type: 3}
+  - {fileID: 5725088198001187241, guid: 3fab91ae9f7edaa428718e5507f10086, type: 3}
+  - {fileID: 5725088198001187241, guid: aa0effc298a58844ebb845b77a24796e, type: 3}
+  - {fileID: 5725088198001187241, guid: e75d0056494930747a1761ab2e567712, type: 3}
+  - {fileID: 5725088198001187241, guid: 536de8eafb805424395f444ef8aafc8e, type: 3}
+  - {fileID: 5725088198001187241, guid: f296b2f9dc642ed49be6f2bf042359b8, type: 3}
+  - {fileID: 5725088198001187241, guid: 6fdea10f375ed704eb448905370cd70b, type: 3}
   finishTile: {fileID: 5725088198001187241, guid: 0f55998b04d5ca44e8b1a1cb357ae17a, type: 3}
 --- !u!1 &493997189
 GameObject:
@@ -546,7 +561,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-102914
+  m_Name: pb_Mesh-277922
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
