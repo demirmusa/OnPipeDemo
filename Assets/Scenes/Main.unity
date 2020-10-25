@@ -378,6 +378,8 @@ MonoBehaviour:
   - {fileID: 5725088198001187241, guid: 83748a1bf1399b54083e513e81076568, type: 3}
   - {fileID: 5725088198001187241, guid: c1c05dbe06cf1d046b7b6137edf40e48, type: 3}
   - {fileID: 5725088198001187241, guid: a0de8e64c0095b546b6b3ba751735db7, type: 3}
+  - {fileID: 5725088198001187241, guid: f34c4f2f83a70ed4393297b5dfc097f0, type: 3}
+  - {fileID: 5725088198001187241, guid: ff7865b2a5345774db0b9d75dfc18d06, type: 3}
   finishTile: {fileID: 5725088198001187241, guid: 0f55998b04d5ca44e8b1a1cb357ae17a, type: 3}
 --- !u!1 &493997189
 GameObject:

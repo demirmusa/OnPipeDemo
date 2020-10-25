@@ -2,6 +2,7 @@
 {
     public enum EnumCollectableType
     {
+        Corn,
         Cubes,
         Rocks
     }

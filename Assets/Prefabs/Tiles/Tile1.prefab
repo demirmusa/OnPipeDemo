@@ -62,7 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   length: 5
-  CollectableType: 0
+  CollectableType: 1
 --- !u!1001 &17887584382474212
 PrefabInstance:
   m_ObjectHideFlags: 0
