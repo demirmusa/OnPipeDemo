@@ -77,6 +77,8 @@ namespace Managers
             PlayerLevelStore.AddLevel();
 
             Debug.Log("Level Completed");
+
+            GlobalEvents.InvokeOnGameEnd();
         }
 
         public void SetGameOver()
@@ -93,6 +95,8 @@ namespace Managers
             player.Die();
 
             Debug.Log("Game Over");
+            
+            GlobalEvents.InvokeOnGameEnd();
         }
 
         private int _currentCollectedItemCount = 1;
