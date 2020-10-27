@@ -4,25 +4,25 @@ using Utilities.PlayerInfoStore;
 
 namespace UI
 {
-    public class GameUIManager : MonoBehaviour
+    public class MenuUIManager : MonoBehaviour
     {
         [SerializeField] private Text levelText;
-        [SerializeField] private Text collectedItemText;
-        
-        private void OnGameStart()
+        [SerializeField] private Text highScoreText;
+
+        private void OnSetMenu()
         {
-            collectedItemText.text = "High Score: " + PlayerCollectedItemStore.GetHighScore().ToString();
+            highScoreText.text = "High Score: " + PlayerCollectedItemStore.GetHighScore().ToString();
             levelText.text = "Level " + PlayerLevelStore.GetCurrentLevel().ToString();
         }       
 
         private void OnEnable()
         {
-            GlobalEvents.OnGameStart += OnGameStart;
+            GlobalEvents.OnSetMenu += OnSetMenu;
         }
 
         private void OnDisable()
         {
-            GlobalEvents.OnGameStart -= OnGameStart;
+            GlobalEvents.OnSetMenu -= OnSetMenu;
         }
     }
 }

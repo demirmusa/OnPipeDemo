@@ -1,4 +1,4 @@
-﻿using System;
+﻿using MapCreation;
 using Players;
 using UI;
 using UnityEngine;
@@ -10,6 +10,7 @@ namespace Managers
     {
         public Player player;
         public CanvasGroupManager canvasGroupManager;
+        public RoadManager roadManager;
         public static GameManager Instance;
 
         private void Awake()
