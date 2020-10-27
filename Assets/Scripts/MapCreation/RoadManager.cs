@@ -1,5 +1,6 @@
-﻿using System;
+﻿using System.Linq;
 using UnityEngine;
+using Utilities.PlayerInfoStore;
 
 namespace MapCreation
 {
@@ -11,19 +12,11 @@ namespace MapCreation
         [Header("Prefabs")] [SerializeField] private Tile[] allMapTiles;
         [SerializeField] private Tile finishTile;
 
-        private LevelManager _levelManager;
-
-        private void Awake()
-        {
-            _levelManager = new LevelManager(minTileLengthInALevel, maxTileLengthInALevel, allMapTiles);
-        }
-
         public void SpawnLevel()
         {
             CleanTiles();
 
-            //level managerdan şuanki levele ait haritayı iste
-            var levelTiles = _levelManager.GetLevelTiles();
+            var levelTiles = GetRandomTiles();
 
             Vector3 spawnPos = Vector3.zero;
 
@@ -46,6 +39,22 @@ namespace MapCreation
                 t.SetParent(null);
                 Destroy(t.gameObject);
             }
+        }
+
+        private Tile[] GetRandomTiles()
+        {
+            var playersCollectableType = PlayerCollectableTypeInfoStore.Get();
+            var availableTiles = allMapTiles.Where(t => t.CollectableType == playersCollectableType).ToList();
+
+            int tileCountInLevel = Random.Range(minTileLengthInALevel, maxTileLengthInALevel + 1);
+
+            var tiles = new Tile[tileCountInLevel];
+            for (int i = 0; i < tileCountInLevel; i++)
+            {
+                tiles[i] = availableTiles[Random.Range(0, availableTiles.Count)];
+            }
+
+            return tiles;
         }
 
         private void OnEnable()
