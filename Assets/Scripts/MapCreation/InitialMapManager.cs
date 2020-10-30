@@ -86,6 +86,7 @@ namespace MapCreation
             {
                 var tile = availableTiles[Random.Range(0, availableTiles.Count)];
                 var tileGO = Instantiate(tile, spawnPos, Quaternion.identity, transform);
+                tileGO.gameObject.SetActive(true);
                 initialTilesQueue.Enqueue(tileGO);
                 spawnPos.y += tile.length;
             }
@@ -99,15 +100,15 @@ namespace MapCreation
         private void OnEnable()
         {
             GlobalEvents.OnSetMenu += SpawnLevel;
-            GlobalEvents.OnGameStart += OnGameStart;
             GlobalEvents.OnCollectableTypeChange += SpawnLevel;
+            GlobalEvents.OnGameStart += OnGameStart;
         }
 
         private void OnDisable()
         {
             GlobalEvents.OnSetMenu -= SpawnLevel;
-            GlobalEvents.OnGameStart -= OnGameStart;
             GlobalEvents.OnCollectableTypeChange -= SpawnLevel;
+            GlobalEvents.OnGameStart -= OnGameStart;
         }
     }
 }

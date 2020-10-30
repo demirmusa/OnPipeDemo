@@ -19,16 +19,19 @@ namespace MapCreation
 
             var levelTiles = GetRandomTiles();
 
-            Vector3 spawnPos = InitialMapManager.GetCurrentSpawnPosition;
+            Vector3 spawnPos = Vector3.zero;
 
             //harita elemanlarının içerisinde dön ve onları oluştur
             foreach (var tile in levelTiles)
             {
-                Instantiate(tile, spawnPos, Quaternion.identity, transform);
+                var newTile = Instantiate(tile, spawnPos, Quaternion.identity, transform);
+                newTile.gameObject.SetActive(false);
+
                 spawnPos.y += tile.length;
             }
 
-            Instantiate(finishTile, spawnPos, Quaternion.identity, transform);
+            var finish = Instantiate(finishTile, spawnPos, Quaternion.identity, transform);
+            finish.gameObject.SetActive(false);
         }
 
         private void CleanTiles()
@@ -58,16 +61,28 @@ namespace MapCreation
             return tiles;
         }
 
+        private void ActivateMap()
+        {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                Transform t = transform.GetChild(i);
+                t.position = InitialMapManager.GetCurrentSpawnPosition + t.position;
+                t.gameObject.SetActive(true);
+            }
+        }
+
         private void OnEnable()
         {
-            GlobalEvents.OnGameStart += SpawnLevel;
-            GlobalEvents.OnSetMenu += CleanTiles;
+            GlobalEvents.OnSetMenu += SpawnLevel;
+            GlobalEvents.OnCollectableTypeChange += SpawnLevel;
+            GlobalEvents.OnGameStart += ActivateMap;
         }
 
         private void OnDisable()
         {
-            GlobalEvents.OnGameStart -= SpawnLevel;
-            GlobalEvents.OnSetMenu -= CleanTiles;
+            GlobalEvents.OnSetMenu -= SpawnLevel;
+            GlobalEvents.OnCollectableTypeChange -= SpawnLevel;
+            GlobalEvents.OnGameStart -= ActivateMap;
         }
     }
 }

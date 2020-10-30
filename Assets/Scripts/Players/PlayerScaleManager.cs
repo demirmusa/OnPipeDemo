@@ -14,21 +14,25 @@ namespace Players
             _startScale = arch.transform.localScale;
         }
 
+        private bool isDown = false;
+
         private void Update()
         {
             if (GameManager.Instance.GameState != GameState.GAME)
             {
                 return;
             }
-            
-            if (Input.GetMouseButtonDown(0))
+
+            if (Input.GetMouseButton(0) && !isDown)
             {
                 SetScale();
+                isDown = true;
             }
 
             if (Input.GetMouseButtonUp(0))
             {
                 ResetScale();
+                isDown = false;
             }
 
             if (_checkScaleChanges)

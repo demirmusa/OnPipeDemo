@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Managers
 {
-    public class GameStarter : MonoBehaviour
+    public class GameStarter : MonoBehaviour, IPointerDownHandler 
     {
-        public void Start()
+        public void OnPointerDown(PointerEventData eventData)
         {
             if (GameManager.Instance.GameState != GameState.MENU)
             {
