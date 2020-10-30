@@ -44,11 +44,13 @@ namespace Players
         private void OnEnable()
         {
             GlobalEvents.OnSetMenu += Reset;
+            GlobalEvents.OnCollectableTypeChange += Reset;
         }
 
         private void OnDisable()
         {
             GlobalEvents.OnSetMenu -= Reset;
+            GlobalEvents.OnCollectableTypeChange -= Reset;
         }
     }
 }

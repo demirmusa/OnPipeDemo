@@ -1,7 +1,4 @@
-﻿using System;
-using Managers;
-using MapCreation;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using Utilities.PlayerInfoStore;
 
@@ -27,7 +24,7 @@ namespace Collectables
             }
 
             PlayerCollectableTypeInfoStore.Set(CollectableType);
-            GameManager.Instance.roadManager.SpawnLevel();
+            GlobalEvents.InvokeOnCollectableTypeChange();
         }
     }
 }

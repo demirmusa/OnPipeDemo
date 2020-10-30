@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5725088198001187254}
   - component: {fileID: 5725088198001187241}
   m_Layer: 0
-  m_Name: Tile3
+  m_Name: Cubes_Tile3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +62,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   length: 5
-  CollectableType: 1
+  usableOnInitialMap: 1
+  collectableType: 1
 --- !u!1001 &17887584382474212
 PrefabInstance:
   m_ObjectHideFlags: 0

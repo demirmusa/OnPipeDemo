@@ -12,8 +12,9 @@ namespace MapCreation
         public int Id => id;
 
         public float length;
+        public bool usableOnInitialMap = true;//bazı parçalar player tam boydayken playerın ölümüne neden olacağı için onları oyunun başlangıcında kullanamayız
 
-        public EnumCollectableType CollectableType;
+        public EnumCollectableType collectableType;
 
         private void OnDrawGizmos()
         {

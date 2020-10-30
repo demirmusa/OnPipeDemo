@@ -11,14 +11,15 @@ namespace MapCreation
 
         [Header("Prefabs")] [SerializeField] private Tile[] allMapTiles;
         [SerializeField] private Tile finishTile;
+        public Tile[] GetAllMapTiles => allMapTiles;
 
-        public void SpawnLevel()
+        private void SpawnLevel()
         {
             CleanTiles();
 
             var levelTiles = GetRandomTiles();
 
-            Vector3 spawnPos = Vector3.zero;
+            Vector3 spawnPos = InitialMapManager.GetCurrentSpawnPosition;
 
             //harita elemanlarının içerisinde dön ve onları oluştur
             foreach (var tile in levelTiles)
@@ -44,7 +45,7 @@ namespace MapCreation
         private Tile[] GetRandomTiles()
         {
             var playersCollectableType = PlayerCollectableTypeInfoStore.Get();
-            var availableTiles = allMapTiles.Where(t => t.CollectableType == playersCollectableType).ToList();
+            var availableTiles = allMapTiles.Where(t => t.collectableType == playersCollectableType).ToList();
 
             int tileCountInLevel = Random.Range(minTileLengthInALevel, maxTileLengthInALevel + 1);
 
@@ -59,12 +60,14 @@ namespace MapCreation
 
         private void OnEnable()
         {
-            GlobalEvents.OnSetMenu += SpawnLevel;
+            GlobalEvents.OnGameStart += SpawnLevel;
+            GlobalEvents.OnSetMenu += CleanTiles;
         }
 
         private void OnDisable()
         {
-            GlobalEvents.OnSetMenu -= SpawnLevel;
+            GlobalEvents.OnGameStart -= SpawnLevel;
+            GlobalEvents.OnSetMenu -= CleanTiles;
         }
     }
 }

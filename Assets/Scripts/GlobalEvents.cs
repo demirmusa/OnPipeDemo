@@ -31,4 +31,10 @@ public class GlobalEvents
     {
         OnSetMenu?.Invoke();
     }
+    
+    public static event Action OnCollectableTypeChange;
+    public static void InvokeOnCollectableTypeChange()
+    {
+        OnCollectableTypeChange?.Invoke();
+    }
 }

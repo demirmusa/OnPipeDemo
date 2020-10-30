@@ -21,12 +21,15 @@ namespace Players
 
         private void Update()
         {
-            if (GameManager.Instance.player.IsDead || GameManager.Instance.GameState != GameState.GAME)
+            Debug.Log(GameManager.Instance.player.IsDead);
+            Debug.Log(GameManager.Instance.GameState.ToString());
+            
+            if (GameManager.Instance.player.IsDead || GameManager.Instance.GameState != GameState.GAME && GameManager.Instance.GameState != GameState.MENU)
             {
                 _rigidbody.velocity = Vector3.zero;
                 return;
             }
-
+            Debug.Log("Move");
             _rigidbody.velocity = _velocityVector;
         }
     }
