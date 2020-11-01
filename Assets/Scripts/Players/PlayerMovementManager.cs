@@ -21,16 +21,46 @@ namespace Players
 
         private void Update()
         {
-            Debug.Log(GameManager.Instance.player.IsDead);
-            Debug.Log(GameManager.Instance.GameState.ToString());
-            
-            if (GameManager.Instance.player.IsDead || GameManager.Instance.GameState != GameState.GAME && GameManager.Instance.GameState != GameState.MENU)
+            if (!_canMove || GameManager.Instance.player.IsDead)
             {
                 _rigidbody.velocity = Vector3.zero;
                 return;
             }
-            Debug.Log("Move");
+
             _rigidbody.velocity = _velocityVector;
+        }
+
+        private void SetCanMove()
+        {
+            _canMove = true;
+        }
+
+        private void StopWithDelay()
+        {
+            SimpleTimer.Create(3f, () =>
+            {
+                if (GameManager.Instance.GameState == GameState.GAME || GameManager.Instance.GameState == GameState.MENU)
+                {
+                    return;
+                }
+
+                _canMove = false;
+            });
+        }
+        
+        private void OnEnable()
+        {
+            GlobalEvents.OnGameEnd += StopWithDelay;
+            GlobalEvents.OnGameStart += SetCanMove;
+            GlobalEvents.OnSetMenu += SetCanMove;
+        }
+
+      
+        private void OnDisable()
+        {
+            GlobalEvents.OnGameEnd -= StopWithDelay;
+            GlobalEvents.OnGameStart -= SetCanMove;
+            GlobalEvents.OnSetMenu -= SetCanMove;
         }
     }
 }
